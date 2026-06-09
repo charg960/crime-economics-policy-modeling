@@ -1,5 +1,5 @@
 # Multidimensional Impact Modeling of Incarceration Policy Reform
-### Active Independent Research Project (In Progress — Summer 2026)
+### Active Independent Research Project (In Progress Summer 2026)
 
 An independent, data-driven research project investigating the economic and societal trade-offs between financial penalties and mass incarceration for non-violent offenses. 
 
