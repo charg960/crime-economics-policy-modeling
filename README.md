@@ -1,6 +1,6 @@
 # Multidimensional Impact Modeling of Incarceration Policy Reform
 
-# Active Independent Research Project (In Progress Summer 2026)
+## Active Independent Research Project (In Progress Summer 2026)
 An independent, data-driven research project investigating the economic and societal trade-offs between financial penalties and mass incarceration for non-violent offenses. The project conceptualizes incarceration as a binary societal choice (incarcerate vs. fine) framed as a cost‑minimization problem with four measurable components:
 
 - Direct carceral costs  
@@ -10,7 +10,7 @@ An independent, data-driven research project investigating the economic and soci
 
 --- 
 
-# Project Architecture & Methodology
+## Project Architecture & Methodology
 
 This project implements a multi-tiered analytical pipeline:
 
@@ -22,7 +22,7 @@ This project implements a multi-tiered analytical pipeline:
 
 ---
 
-# Current Status
+## Current Status
 
 - [x] Phase 1: Conceptual Framework & Hypothesis Formulation  
 - [/] Phase 2: Data Collection & Wrangling (Active)  
@@ -33,38 +33,38 @@ This project implements a multi-tiered analytical pipeline:
 
 ---
 
-# Data Access & Legal Compliance
+## Data Access & Legal Compliance
 
 This project uses multiple datasets with strict redistribution restrictions.  
 Raw data must not be uploaded to GitHub or shared publicly.
 
-# World Prison Brief  
+## World Prison Brief  
 - Access: https://www.prisonstudies.org  
 - Redistribution: PDFs may not be redistributed.  
 - Use: Manually downloaded country-level incarceration data.
 
-# UNODC Crime & Criminal Justice Data  
+## UNODC Crime & Criminal Justice Data  
 - Access: https://dataunodc.un.org  
 - Redistribution: Public domain; citation required.  
 - Use: Crime, sentencing, and justice indicators.
 
-# World Bank Development Indicators  
+## World Bank Development Indicators  
 - Access: https://data.worldbank.org  
 - Redistribution: Allowed with citation.  
 - Use: GDP, labor force, and macroeconomic controls.
 
-# BJS NCRP (National Corrections Reporting Program)  
+## BJS NCRP (National Corrections Reporting Program)  
 - Access: https://www.icpsr.umich.edu  
 - Redistribution: Strictly prohibited.  
 - Use: Offender-level incarceration and sentencing records.
 
-# IPUMS CPS Microdata  
+## IPUMS CPS Microdata  
 - Access: https://cps.ipums.org  
 - Redistribution: Strictly prohibited.  
 - Required citation:  
   Flood et al. IPUMS CPS: Version 13.0 [dataset]. Minneapolis, MN: IPUMS, 2025. https://doi.org/10.18128/D030.V13.0
 
-### Important CPS Note  
+## Important CPS Note  
 - May 2026 CPS data are available.  
 - October 2025 CPS data were not collected due to the U.S. federal government shutdown.  
 This gap must be documented in all time-series analyses.
