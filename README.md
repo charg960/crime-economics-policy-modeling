@@ -70,3 +70,39 @@ Raw data must not be uploaded to GitHub or shared publicly.
 - Important:  
   - May 2026 data available  
   - October 2025 missing due to shutdown
+
+## Data Processing Notes
+
+### NCRP
+
+* During EDA, I found that sentence length (`sentlgth`), time served (`timesrvd`), and age at admission (`ageadmit`) were stored as categorical ranges rather than exact numeric values. To make these variables usable for analysis, each range was converted to its midpoint (e.g., "2–4.9 years" → 3.5 years).
+
+* **Life sentences, life without parole, and death sentences** do not have meaningful numeric durations. These records were coded as `NA` and flagged separately using `sentence_indeterminate` for later modeling.
+
+* Removed 1,524,138 records with admission or release years before 1990 since they fall outside the study period.
+
+* The `race` variable contains approximately 8.9% missing values. This appears to reflect limitations in the original data collection rather than a processing issue; the missingness was documented and retained.
+
+### CPS
+
+* Exploratory analysis showed that income variables are only available in the **Annual Social and Economic Supplement (ASEC)**. The dataset was therefore restricted to ASEC observations (March collections), reducing the sample from 8,168,647 to 3,063,661 records.
+
+* Removed `hwtfinl`, `wtfinl`, and `hflag` after determining they contained no useful information within the ASEC subset. The first two are monthly survey weights that do not apply to ASEC analyses, while `hflag` is only relevant to a specific survey year.
+
+* Verified that income measures (`inctot`, `incwage`) are already adjusted to constant 2010 dollars by IPUMS using CPI-U inflation adjustments.
+
+* Identified a gap in **October 2025 CPS data collection** due to the federal government shutdown. This should be documented in future time-series analyses.
+
+### WPB
+
+* Parsed prison population tables from PDF reports using `pdftools`.
+
+* Some values were reported as approximate (prefixed with `"c."`). These values were retained numerically and flagged using `is_approximate = TRUE` to preserve uncertainty from original source.
+
+* Extracted records for 219 countries and territories across five continents.
+
+### Vera
+
+* Initial exploration revealed 156 variables, many of which represent highly specific demographic breakdowns with substantial missingness or sparse coverage.
+
+* The pipeline focuses on core incarceration counts and incarceration rate measures while preserving the original source data for reproducibility. This reduces complexity while retaining the variables most relevant to analysis.
