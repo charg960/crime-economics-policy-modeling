@@ -1,0 +1,15 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+load_undoc|function|b6361f32ad8e2395|||||||||||||||
+unodc_raw|stem|391961c8ea3757a4|59bffc107b51ae16|c0596c136eab86e8|-877253888||t20626.6627420681s|s87052b|87052|rds|local|vector|||0.043||
+wdi_raw|stem|6294cd78c340cfa3|96fddc63524919e2|ac256082bfc79d40|1583731254||t20626.6652341032s|s165125b|165125|rds|local|vector|||0.206||
+wpb_raw|stem|d209d32c2c972b22|71e4a57eb0dc9e23|114683788b3e0838|411491948||t20627.1453453815s|s3521b|3521|rds|local|vector|||0.515|NAs introduced by coercion. NAs introduced by coercion. NAs introduced by coercion. NAs introduced by coercion. NAs introduced by coercion|
+ncrp_raw|stem|ee37df99566d7ddf|e42ef2e8a6da61da|13e66167764836d6|553657013||t20627.2245065825s|s98238990b|98238990|rds|local|vector|||127.51||
+cps_raw|stem|0f5c939f33a9bd5d|089815ae5d9956ac|4ec9a2218ff787c8|1569045028||t20627.2261211405s|s78991137b|78991137|rds|local|vector|||12.606||
+load_unodc|function|b6361f32ad8e2395
+load_vera|function|413ed894487b530e
+load_wpb|function|3d5552c95b4cecce
+.Random.seed|object|99674a79ad25e71f
+load_wdi|function|95d511bf42fb1449
+load_ncrp|function|73ad9460b957e72c
+load_cps|function|f363e9cd5f04aaaf
+vera_raw|stem|0b4f88f577b53910|294a5f67b8e723d8|14a9a472d9b24e3e|87757435||t20627.2352215091s|s65871b|65871|rds|local|vector|||0.216||
