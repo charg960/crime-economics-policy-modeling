@@ -20,8 +20,8 @@ This project implements a multi-tiered analytical pipeline:
 ## Current Status
 
 - [x] Phase 1: Conceptual Framework & Hypothesis Formulation  
-- [/] Phase 2: Data Collection & Wrangling (Active)  
-- [ ] Phase 3: Exploratory Data Analysis  
+- [x] Phase 2: Data Collection & Wrangling
+- [/] Phase 3: Exploratory Data Analysis (Active)
 - [ ] Phase 4: Bayesian Statistical Modeling  
 - [ ] Phase 5: ML Classification & SHAP Explainability  
 - [ ] Phase 6: Synthesis & R Markdown Reporting  
