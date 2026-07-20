@@ -17,4 +17,4 @@ data/raw/
 *.gz
 *.txt
 *.html
-*.rda
+*.rda.RDataTmp
