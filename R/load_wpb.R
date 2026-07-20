@@ -23,39 +23,43 @@ load_wpb <- function(
     trimmed <- str_trim(line)
     if (trimmed == "") next
     
-    # Region subheading
     if (trimmed %in% region_headers) {
       current_region <- trimmed
       next
     }
     
-    # Skip any line that starts with a number (trend rows)
-    # or known boilerplate
     if (str_detect(trimmed, "^\\d")) next
     if (str_detect(trimmed, "^(World|Table|Prison|Date|Estim|Trend|Part|year|total|rate|population|Figures)")) next
-    
-    # Must contain digits to be a country row
     if (!str_detect(trimmed, "\\d")) next
     
-    # Collapse "c. " (with space) into "c." so it doesn't split separately
     cleaned <- str_replace_all(trimmed, "c\\.\\s+", "c.")
+    parts   <- str_split(cleaned, "\\s{2,}")[[1]]
+    parts   <- parts[parts != ""]
     
-    # Split on 2+ spaces
-    parts <- str_split(cleaned, "\\s{2,}")[[1]]
-    parts <- parts[parts != ""]
-    
-    # Need at least 5 parts: name, total, date, nat_pop, rate
-    if (length(parts) < 5) next
+    if (length(parts) < 4) next
     
     country_name <- str_trim(parts[1])
-    
-    # Skip if name looks like a footnote or single symbol
     if (str_length(country_name) < 2) next
     if (str_detect(country_name, "^[\\*\\+\\d]")) next
     
-    raw_total <- parts[2]
-    raw_rate  <- parts[5]
+    # Scan parts for total and rate by value rather than fixed position
+    # Handles multi-word country names shifting column indices
+    total_idx <- NA
+    rate_idx  <- NA
     
+    for (i in 2:min(length(parts), 7)) {
+      val <- suppressWarnings(as.numeric(str_remove_all(parts[i], "c\\.|,")))
+      if (!is.na(val)) {
+        if (is.na(total_idx) && val > 50 && val == round(val))        total_idx <- i
+        else if (!is.na(total_idx) && val >= 1 && val <= 2000 
+                 && val == round(val))                            { rate_idx <- i; break }
+      }
+    }
+    
+    if (is.na(total_idx) | is.na(rate_idx)) next
+    
+    raw_total <- parts[total_idx]
+    raw_rate  <- parts[rate_idx]
     is_approx <- str_detect(raw_total, "c\\.") | str_detect(raw_rate, "c\\.")
     pop_total <- str_remove_all(raw_total, "c\\.|,") |> as.numeric()
     pop_rate  <- str_remove_all(raw_rate,  "c\\.") |> as.numeric()
@@ -71,6 +75,16 @@ load_wpb <- function(
       is_approximate   = is_approx
     )
   }
+  
+  # El Salvador parses incorrectly due to c. on both total and rate
+  # with a decimal date field confusing the scanner — hardcoded from WPB p.6
+  records[[length(records) + 1]] <- tibble(
+    region           = "Central America",
+    country          = "El Salvador",
+    prison_pop_total = 71000,
+    prison_pop_rate  = 1086,
+    is_approximate   = TRUE
+  )
   
   wpb <- bind_rows(records) |>
     mutate(
